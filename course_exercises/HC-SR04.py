@@ -2,19 +2,19 @@ import  time
 import wiringpi 
 import sys
 
-pinTng = 1
-pinEcho = 2
+pinTrg = 16
+pinEcho = 13
 
 wiringpi.wiringPiSetup()
 
-wiringpi.pinMode(pinTng, 1)                       # Set pin to mode 1 ( OUTPUT )
+wiringpi.pinMode(pinTrg, 1)                       # Set pin to mode 1 ( OUTPUT )
 wiringpi.pinMode(pinEcho, 0)                      # Set pin to mode 0 ( INPUT )
 
 print('Start')
 while True:
-    wiringpi.digitalWrite(pinTng, 1)              # output high
+    wiringpi.digitalWrite(pinTrg, 1)              # output high
     time.sleep (0.00001)
-    wiringpi.digitalWrite(pinTng, 0)              # output low
+    wiringpi.digitalWrite(pinTrg, 0)              # output low
 
     while wiringpi.digitalRead(pinEcho) == 0:
         pass
@@ -28,4 +28,4 @@ while True:
     distance = time_passed * 17000
 
     print('Measured Distance =', round(distance, 1), 'cm')
-    time.sleep(0.5)
+    time.sleep(15)

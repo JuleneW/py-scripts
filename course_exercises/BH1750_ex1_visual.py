@@ -5,8 +5,6 @@ import paho.mqtt.client as mqtt
 import matplotlib.pyplot as plt
 import datetime
 
-plt.ion()
-
 # Create an I2C bus object
 bus = SMBus(0)
 address = 0x23 #i2c address
