@@ -164,26 +164,26 @@ try:
 
         # Measure distance only every 15 seconds
         if current_time - last_distance_measurement_time >= 15:
-            if adjusting_brightness:
-                wiringpi.digitalWrite(pinTrg, 1)              # output high
-                time.sleep(0.00001)
-                wiringpi.digitalWrite(pinTrg, 0)              # output low
-                while wiringpi.digitalRead(pinEcho) == 0:       
-                    pass
-                signal_high = time.time()                   # note the start time of first echo
-                while wiringpi.digitalRead(pinEcho) == 1:
-                    pass
-                signal_low = time.time()                    # note the end time of last echo
-                time_passed = signal_low - signal_high
-                distance = time_passed * 17000
-                print('Measured Distance =', round(distance, 1), 'cm')
+            #if adjusting_brightness:
+            wiringpi.digitalWrite(pinTrg, 1)              # output high
+            time.sleep(0.00001)
+            wiringpi.digitalWrite(pinTrg, 0)              # output low
+            while wiringpi.digitalRead(pinEcho) == 0:       
+                pass
+            signal_high = time.time()                   # note the start time of first echo
+            while wiringpi.digitalRead(pinEcho) == 1:
+                pass
+            signal_low = time.time()                    # note the end time of last echo
+            time_passed = signal_low - signal_high
+            distance = time_passed * 17000
+            print('Measured Distance =', round(distance, 1), 'cm')
 
-                # If distance is less than 20 cm, set brightness to 10
-                if distance < 20:
-                    dutycycle = 10
-                    print(f'lights: {dutycycle} %')
+            # If distance is less than 20 cm, set brightness to 10
+            if distance < 20:
+                dutycycle = 10
+                print(f'lights: {dutycycle} %')
 
-                last_distance_measurement_time = current_time  # Update last measurement time
+            last_distance_measurement_time = current_time  # Update last measurement time
 
         # Check if buttons are pressed (button reactions happen immediately)
         if wiringpi.digitalRead(pin_switch0) == 0:  # input is active low
