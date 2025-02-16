@@ -210,7 +210,6 @@ lcd_1.refresh()
 
 # Main loop
 try:
-    sens_temperature_value = bmp280.get_temperature()
     print('start')
     while True:
         # get sensor values at start of every loop
