@@ -333,20 +333,6 @@ try:
         else:
             bright_notified = False # Reset if condition no longer holds
 
-        """ if room_temp < 18:
-            if not cold_notified:  # Send only if not already sent
-                conn = http.client.HTTPSConnection("api.pushover.net:443")
-                conn.request("POST", "/1/messages.json",
-                    urllib.parse.urlencode({
-                        "token": "ae1d36igbzin3m1ue52u2eydcjjgaf",
-                        "user": "ukzzn5v59252yvktrykor8ymqr6p8n",
-                        "message": "Cold",
-                    }), { "Content-type": "application/x-www-form-urlencoded" })
-                conn.getresponse()
-                cold_notified = True  # Mark as notified
-        else:
-            cold_notified = False  # Reset if condition no longer holds """
-
         time.sleep(15)
     
 except KeyboardInterrupt:
